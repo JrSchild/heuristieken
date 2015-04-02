@@ -46,7 +46,7 @@ class Solver1(BaseSolver):
     # Example helper
 ```
 
-[Some more scribles and ideas](./theries.md)
+[Some more scribles and ideas](./theories.md)
 
 ### Links
 - http://mathworld.wolfram.com/PerfectSquareDissection.html
