@@ -1,4 +1,4 @@
-var width, height, blocks, matrix;
+ var width, height, blocks, matrix;
 
 // Initialize matrix
 function initialize() {
