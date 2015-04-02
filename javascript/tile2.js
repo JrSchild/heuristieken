@@ -23,11 +23,11 @@ var blocks = [
 ];
 
 var solver = require('./solver')({
-  width: 17,
-  height: 17,
+  width: width,
+  height: height,
   blocks: blocks
 });
 solver.initialize();
-console.log(solver.solve());
+solver.solve();
 solver.print();
 

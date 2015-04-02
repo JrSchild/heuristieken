@@ -15,10 +15,10 @@ var blocks = [
 ];
 
 var solver = require('./solver')({
-  width: 6,
-  height: 8,
+  width: width,
+  height: height,
   blocks: blocks
 });
 solver.initialize();
-console.log(solver.solve());
+solver.solve();
 solver.print();

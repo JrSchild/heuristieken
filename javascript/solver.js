@@ -31,8 +31,6 @@ function remove(tile) {
       matrix[x][y] = null;
     }
   }
-  // tile.left = null;
-  // tile.right = null;
 }
 
 function can_place(tile, left, top) {
@@ -50,9 +48,11 @@ function can_place(tile, left, top) {
 function startPlacing() {
   var tile;
 
+  // If there are tiles left in the stack.
   if (!(tile = blocks.shift())) {
     return true;
   }
+
   for (var x = 0; x <= width - tile.width; x++) {
     for (var y = 0; y <= height - tile.height; y++) {
       if (place(tile, x, y)) {
@@ -76,7 +76,6 @@ function print_matrix() {
     }
     console.log(line.join(' '));
   }
-
 }
 
 module.exports = function (config) {
@@ -90,7 +89,7 @@ module.exports = function (config) {
     solve: function () {
       var now = Date.now();
       startPlacing();
-      console.log(blocks.length ? 'not' : '', 'solved in', (Date.now() - now) / 1000, 's' );
+      console.log(blocks.length ? 'not' : '' + 'solved in', (Date.now() - now) / 1000, 's' );
     },
     print: print_matrix
   };
