@@ -11,22 +11,25 @@ At the start of blank canvas this looks like
 
 Get lowest row, width, length to the bottom. length to the left, and length to the right.
 ```
-lowest_col = 0
+lowest_col = height 
 height_free = NULL
-pos_left = 0
-pos_right = 0
-grouping = True
+pos_left = NULL
+pos_right = NULL
+grouping = False
 for h, i in column_heights:
-	if h < lowest_col:
+	# If we are in the lowest part of the field
+	if h <= lowest_col
+
+		# Move the right most 'cursor' and set the lowest height
 		pos_right = i
-		pos_left = i
 		lowest_col = h
-		grouping = True
-	elif h == lowest_col
-		post_right = i
+
+		# If this is the first column in the horizontal group, start a new one.
 		if not grouping
 			pos_left = i
 			grouping = True
+
+	# End group
 	elif:
 		grouping False
 height_free = height - lowest_col - 1
