@@ -32,5 +32,5 @@ for h, i in column_heights:
 height_free = height - lowest_col - 1
 ```
 
-Theoratically the entire field could look like a one, one dimensional array. When a tile gets placed on the field the tile gets popped from the stack, it comes on a new stack of placed tiles. Add the new heights of the tiles column to each index in the array and set the left position on the tile. Removing it is the reverse where it gets pushed back on the stack of tiles that need to be placed.
+Theoratically the entire field could look like a one, one dimensional array. When a tile gets placed on the field the tile gets popped from the stack, it comes on a new stack of placed tiles. Add the new heights of the tiles column to each index in the array and set the left position on the tile. Removing it is the reverse where it gets pushed back on the stack of tiles that need to be placed and the height is substracted in the field-array.
 This is based on the assumption that all tiles will be placed on top of each other from the bottom down and that all tiles are placed with a recursive stack mechanism.
