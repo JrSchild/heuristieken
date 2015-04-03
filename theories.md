@@ -20,13 +20,13 @@ for h, i in column_heights:
 	# If we are in the lowest part of the field
 	if h <= lowest_col
 
-		# Move the right most 'cursor' and set the lowest height
+		# Move the right most 'cursor'
 		pos_right = i
-		lowest_col = h
 
 		# If this is the first column in the horizontal group, start a new one.
-		if not grouping
+		if not grouping or h < lowest_col
 			pos_left = i
+			lowest_col = h
 			grouping = True
 
 	# End group
