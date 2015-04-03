@@ -48,7 +48,7 @@ function can_place(tile, left, top) {
 function startPlacing() {
   var tile;
 
-  // If there are tiles left in the stack.
+  // If there are no tiles left in the stack.
   if (!(tile = blocks.shift())) {
     return true;
   }
