@@ -29,13 +29,19 @@ class BaseSolver():
             lowlength += 1
         return {'positionleft': positionleft, 'lowest': lowest, 'lowlength':lowlength, 'height':self.height - lowest}
 
-    def canPlace(self, tile, row):
-        if row['']
-        return False
-    # def remove(self, tile):
+    def can_place(self, tile, row):
+        return tile['width'] <= row['lowlength'] and tile['height'] <= row['height']
+
+    #def remove(self, tile):
     #     # Implementation
     #     return False
+
+    #def place(self, tile, x, y):
+    #   #Implementation
+    #   return False
 
 b = BaseSolver(game)
 row = b.findLowcation()
 print row
+test = b.can_place(b.tiles[0], b.findLowcation())
+print test
