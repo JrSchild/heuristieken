@@ -15,7 +15,7 @@ class BaseSolver():
         self.width = game['width']
         self.height = game['height']
         self.tiles = game['tiles']
-        self.matrix = [1,1,1,2,2,2,3,4,4,4]
+        self.matrix = [1,1,1,1,2,2,2,3,4,4,4]
         # self.matrix = [0 for x in range(self.width)]
     def solve(self):
         return 1;
@@ -41,6 +41,8 @@ class BaseSolver():
         return True
 
     def place(self, tile, row):
+        if not self.can_place(tile, row):
+            return False
         colsleft, placeposition = tile['width'], row['positionleft']
         while colsleft > 0:
             self.matrix[placeposition] += tile['height']
@@ -50,8 +52,8 @@ class BaseSolver():
 
 b = BaseSolver(game)
 row = b.findLowcation()
-print row
-test = b.can_place(b.tiles[0], b.findLowcation())
-place = b.place(b.tiles[2],b.findLowcation())
-print place
-print test
+print 'row contains:', row
+place = b.place(b.tiles[0],b.findLowcation())
+print 'placing is completed:', place
+updatedrow = b.findLowcation()
+print 'row contains:', updatedrow
