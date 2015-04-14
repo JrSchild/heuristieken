@@ -32,16 +32,26 @@ class BaseSolver():
     def can_place(self, tile, row):
         return tile['width'] <= row['lowlength'] and tile['height'] <= row['height']
 
-    #def remove(self, tile):
-    #     # Implementation
-    #     return False
+    def remove(self, tile, row):
+        colsleft, placeposition = tile['width'], row['positionleft']
+        while colsleft > 0:
+            self.matrix[placeposition] -= tile['height']
+            placeposition += 1
+            colsleft -= 1
+        return True
 
-    #def place(self, tile, x, y):
-    #   #Implementation
-    #   return False
+    def place(self, tile, row):
+        colsleft, placeposition = tile['width'], row['positionleft']
+        while colsleft > 0:
+            self.matrix[placeposition] += tile['height']
+            placeposition += 1
+            colsleft -= 1
+        return True
 
 b = BaseSolver(game)
 row = b.findLowcation()
 print row
 test = b.can_place(b.tiles[0], b.findLowcation())
+place = b.place(b.tiles[2],b.findLowcation())
+print place
 print test
