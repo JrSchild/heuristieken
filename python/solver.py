@@ -37,8 +37,7 @@ class BaseSolver():
 
         row = self.findLowcation()
         for index, tile in enumerate(self.tiles):
-            if tile != None and self.can_place(tile, row) == True:
-                self.place(tile, row)
+            if tile != None and self.place(tile, row) == True:
                 self.placedtiles.append(tile)
                 self.tiles[index] = None
                 if self.solve():
@@ -54,7 +53,7 @@ class BaseSolver():
         lowlength = 0
         index = self.matrix.index(lowest)
         positionleft = index
-        while index < len(self.matrix) and self.matrix[index] == lowest:
+        while index < self.width and self.matrix[index] == lowest:
             index += 1
             lowlength += 1
         return {'positionleft': positionleft, 'lowest': lowest, 'lowlength':lowlength, 'height':self.height - lowest}
