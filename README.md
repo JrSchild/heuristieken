@@ -52,6 +52,7 @@ class Solver1(BaseSolver):
 - place and remove can be optimized with a single incrementer/decrementer.  
 - `if len(self.placedtiles) == len(self.tiles):` can be optimized. Cache the total length of self.tiles. Use counter to store the length of placedtiles (benchmark first)
 - Is it faster/even possible to cache the value of `enumerate(self.tiles)` in solve()?
+- Move game configurations to external files.
 
 [Some more scribles and ideas](./theories.md)
 
