@@ -78,7 +78,7 @@ function print_matrix() {
   }
 }
 
-module.exports = function (config) {
+function Solve(config) {
   height = config.height;
   width = config.width;
   blocks = config.blocks;
@@ -89,8 +89,18 @@ module.exports = function (config) {
     solve: function () {
       var now = Date.now();
       startPlacing();
-      console.log(blocks.length ? 'not' : '' + 'solved in', (Date.now() - now) / 1000, 's' );
+      var end = (Date.now() - now) / 1000;
+      console.log(blocks.length ? 'not' : '' + 'solved in', end, 's' );
     },
     print: print_matrix
   };
-};
+}
+
+// var solver = Solve(require('./games/6x8.js'));
+var solver = Solve(require('./games/17x17.js'));
+// var solver = Solve(require('./games/23x27.js'));
+// var solver = Solve(require('./games/55x56.js'));
+
+solver.initialize();
+solver.solve();
+solver.print();
