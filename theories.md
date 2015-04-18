@@ -39,3 +39,6 @@ Theoretically the entire field could look like a one, one dimensional array. Whe
 This is based on the assumption that all tiles will be placed on top of each other from the bottom down and that all tiles are placed with a recursive stack mechanism.
 
 Rather than working down from the top, you could also work top-down and left-right, work on two opposite sides or even take that further and alternate clockwise with every side. The last one would be substantially more complex because multideminsional arrays need be kept with all locations. Working top-down and down-top would be easier because on both sides you have the assurance that that there are no gaps.
+
+Laying out the edges before filling the rest of the field could be a lot faster.
+
