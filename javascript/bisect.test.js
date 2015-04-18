@@ -17,9 +17,9 @@ module.exports = function (Solver) {
   solver = new Solver(game);
 
   assert.deepEqual(solver.lowestCol(), {
-    lowest_col: 0,
-    pos_left: 0,
-    // pos_right: 5,
+    top: 0,
+    left: 0,
+    // right: 5,
     width: 6,
     height: 8,
     currWidth: 0

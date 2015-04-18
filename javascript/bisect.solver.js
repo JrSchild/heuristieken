@@ -80,9 +80,9 @@ Solver.prototype.place = function (tile, row) {
   }
 
   this.placed.unshift(tile);
-  tile.left = row.pos_left + tmp;
-  tile.top = row.lowest_col;
-  for (i = row.pos_left + tmp, l = row.pos_left + row.currWidth; i < l; i++) {
+  tile.left = row.left + tmp;
+  tile.top = row.top;
+  for (i = row.left + tmp, l = row.left + row.currWidth; i < l; i++) {
     this.matrix[i] += tile.height;
   }
   return true;
@@ -129,31 +129,31 @@ ${elements}
 };
 
 Solver.prototype.lowestCol = function () {
-  var lowest_col, pos_left, pos_right, grouping, height;
-  lowest_col = this.height;
+  var top, left, right, grouping, height;
+  top = this.height;
   grouping = false;
 
   for (var i = 0; i < this.matrix.length; i++) {
-    if (this.matrix[i] <= lowest_col) {
-      pos_right = i;
+    if (this.matrix[i] <= top) {
+      right = i;
 
-      if (!grouping || this.matrix[i] < lowest_col) {
-        pos_left = i;
+      if (!grouping || this.matrix[i] < top) {
+        left = i;
         grouping = true;
-        lowest_col = this.matrix[i];
+        top = this.matrix[i];
       }
     } else {
       grouping = false;
     }
   }
-  height = this.height - lowest_col;
+  height = this.height - top;
 
   // Using an array might be a micro optimzation, for now this works great.
   return {
-    lowest_col: lowest_col,
-    pos_left: pos_left,
-    // pos_right: pos_right,
-    width: height ? (pos_right - pos_left + 1) : 0,
+    top: top,
+    left: left,
+    // right: right,
+    width: height ? (right - left + 1) : 0,
     height: height,
     currWidth: 0
   };
