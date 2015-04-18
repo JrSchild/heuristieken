@@ -19,7 +19,7 @@ module.exports = function (Solver) {
   assert.deepEqual(solver.lowestCol(), {
     lowest_col: 0,
     pos_left: 0,
-    pos_right: 5,
+    // pos_right: 5,
     width: 6,
     height: 8,
     currWidth: 0
