@@ -21,5 +21,5 @@ class TileMaker():
 					break
 			print "oppervlak totaal= ", self.surface
 
-hoi = TileMaker(20)
+hoi = TileMaker(34)
 hoi.printer()
