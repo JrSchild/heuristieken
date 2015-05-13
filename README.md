@@ -19,9 +19,11 @@ Game = {
 
 #### TODO
 - Rewrite findLowcation to use a single loop rather than four (min(), matrix.index(), len(), while). Only a single incrementer could be used. Is returning a list faster than a dict?  
+- ~~can_place is called twice, first in solve() then in place(). Just call place() immediately. Maybe can_place could be implemented into place, saves an extra function call.~~  
+- ~~place and remove can be optimized with a single incrementer/decrementer.~~  
 - `if len(self.placedtiles) == len(self.tiles):` can be optimized. Cache the total length of self.tiles. Use counter to store the length of placedtiles (benchmark first)
 - Is it faster/even possible to cache the value of `enumerate(self.tiles)` in solve()?
-- Move game configurations to external files.
+- ~~Move game configurations to external files.~~
 
 [Some more scribles and ideas](./theories.md)
 
