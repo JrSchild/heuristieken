@@ -44,19 +44,19 @@ class BaseSolver():
         return False
 
     def findLowcation(self):
-        tempindex, lowlength, lowest = 0, 0, self.height
-        for count, row in enumerate(self.matrix):
+        count, lowlength, lowest = 0, 0, self.height
+        for row in self.matrix:
             if row < lowest:
                 lowest, index, lowlength = row, count, 0
+            count += 1
             if row == lowest:
                 lowlength += 1
-
         # lowest = min(self.matrix)
         # lowlength = 0
-        # index = self.matrix.index(lowest)
-        # positionleft = index
-        # while index < self.width and self.matrix[index] == lowest:
-        #     index += 1
+        # positionleft = self.matrix.index(lowest)
+        # index = positionleft
+        # while positionleft < self.width and self.matrix[positionleft] == lowest:
+        #     positionleft += 1
         #     lowlength += 1
 
         return {'positionleft': index, 'lowest': lowest, 'lowlength':lowlength, 'height':self.height - lowest}
