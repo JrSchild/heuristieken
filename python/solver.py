@@ -4,13 +4,15 @@ class BaseSolver():
         self.width = game['width']
         self.height = game['height']
         self.tiles = game['tiles']
+        self.totaltiles = len(self.tiles) 
         self.placedtiles = []
         self.matrix = [0 for x in range(self.width)]
         self.swaps = 0
-        self.surface = 0
-    def solve(self):
+        self.runs = 0
 
-        if len(self.placedtiles) == len(self.tiles):
+    def solve(self):
+        self.runs += 1
+        if len(self.placedtiles) == self.totaltiles:
             return True
         row = self.findLowcation()
         
@@ -25,30 +27,39 @@ class BaseSolver():
                 self.tiles[index] = tile
                 self.remove(tile, row)
 
-
-            if tile != None:
-               tile['width'], tile['height'] = tile['height'], tile['width']
-               if self.place(tile, row):
-                   self.placedtiles.append(tile)
-                   self.tiles[index] = None
+            # SWAPPING PART
+            # if tile != None:
+            #    tile['width'], tile['height'] = tile['height'], tile['width']
+            #    if self.place(tile, row):
+            #        self.placedtiles.append(tile)
+            #        self.tiles[index] = None
             
-                   if self.solve():
-                       return True
-                   self.placedtiles.pop()
-                   self.tiles[index] = tile
-                   self.remove(tile, row)
-               tile['width'], tile['height'] = tile['height'], tile['width']
+            #        if self.solve():
+            #            return True
+            #        self.placedtiles.pop()
+            #        self.tiles[index] = tile
+            #        self.remove(tile, row)
+            #    tile['width'], tile['height'] = tile['height'], tile['width']
+
         return False
 
     def findLowcation(self):
-        lowest = min(self.matrix)
-        lowlength = 0
-        index = self.matrix.index(lowest)
-        positionleft = index
-        while index < self.width and self.matrix[index] == lowest:
-            index += 1
-            lowlength += 1
-        return {'positionleft': positionleft, 'lowest': lowest, 'lowlength':lowlength, 'height':self.height - lowest}
+        tempindex, lowlength, lowest = 0, 0, self.height
+        for count, row in enumerate(self.matrix):
+            if row < lowest:
+                lowest, index, lowlength = row, count, 0
+            if row == lowest:
+                lowlength += 1
+
+        # lowest = min(self.matrix)
+        # lowlength = 0
+        # index = self.matrix.index(lowest)
+        # positionleft = index
+        # while index < self.width and self.matrix[index] == lowest:
+        #     index += 1
+        #     lowlength += 1
+
+        return {'positionleft': index, 'lowest': lowest, 'lowlength':lowlength, 'height':self.height - lowest}
 
     def remove(self, tile, row):
         placeposition = row['positionleft']
@@ -70,13 +81,15 @@ class BaseSolver():
     def turn(self,tile):
         tile['width'], tile['height'] = tile['height'], tile['width']
 
-from games.game23x27 import game
-# from games.game55x56 import game
+# from games.game23x27 import game
+from games.game55x56 import game
 # from games.game119x120 import game
+
+
 b = BaseSolver(game)
 solved = b.solve()
 
-print b.matrix, "\n", b.placedtiles,"\n", "swaps = ", b.swaps
+print b.matrix, "\n", b.placedtiles,"\nswaps = ", b.swaps, "\nruns of solve:", b.runs
 
 
 # row = b.findLowcation()
