@@ -60,6 +60,8 @@ class BaseSolver():
         #     positionleft += 1
         #     lowlength += 1
 
+
+        #debugging purposes, whats the difference?
         if self.stop < 10:
             print index, lowest, lowlength, self.height - lowest
             self.stop += 1
