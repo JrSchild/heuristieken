@@ -9,6 +9,7 @@ class BaseSolver():
         self.matrix = [0 for x in range(self.width)]
         self.swaps = 0
         self.runs = 0
+        self.stop = 0
 
     def solve(self):
         self.runs += 1
@@ -44,7 +45,7 @@ class BaseSolver():
         return False
 
     def findLowcation(self):
-        count, lowlength, lowest = 0, 0, self.height
+        index, count, lowlength, lowest = 0, 0, 0, self.height
         for row in self.matrix:
             if row < lowest:
                 lowest, index, lowlength = row, count, 0
@@ -58,6 +59,10 @@ class BaseSolver():
         # while positionleft < self.width and self.matrix[positionleft] == lowest:
         #     positionleft += 1
         #     lowlength += 1
+
+        if self.stop < 10:
+            print index, lowest, lowlength, self.height - lowest
+            self.stop += 1
 
         return {'positionleft': index, 'lowest': lowest, 'lowlength':lowlength, 'height':self.height - lowest}
 
@@ -82,7 +87,7 @@ class BaseSolver():
         tile['width'], tile['height'] = tile['height'], tile['width']
 
 # from games.game23x27 import game
-from games.game55x56 import game
+from games.game23x27 import game
 # from games.game119x120 import game
 
 
